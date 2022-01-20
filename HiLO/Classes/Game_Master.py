@@ -35,10 +35,42 @@ class Game_Master:
     def get_inputs(self):
         """displays first card, then recieves input for if the next card is higher or lower
         """
+        first_card = Card.new_card()
+        print (f'The card is:{first_card}')
+
+        guess = input(f'High or Low? (h/l)').lower()
+
+        next_card = Card.new_card()
+
+        print(f'The next card was: {next_card}')
+
+        if guess == 'l':
+            if next_card <= first_card:
+               points = self.player_points + 100
+               print(f'Your score is: {points}')
+            else:
+               points = self.player_points - 75
+               print(f'Your score is: {points}')
+
+                
+        elif guess == 'h':
+            if next_card >= first_card:
+               points = self.player_points + 100
+               print(f'Your score is: {points}')
+
+                
+            else:
+               points = self.player_points - 75
+               print(f'Your score is: {points}')
+
+                
+
         
     def do_logic(self):
         """generates the score system and keeps track of it
         """
+        self.player_points = 300
+
         
     def do_display(self):
         """outputs the results and, if the score is not 0, requests to play again.
