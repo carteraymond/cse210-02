@@ -11,9 +11,10 @@ class Card:
     """
     
     def __init__(self):
-        self.new_card=0
+        self.card=0
         
         
         
     def new_card(self):
-        self.new_card=random.randint(1,13)
+        self.card=random.randint(1,13)
+        return self.card
