@@ -48,7 +48,7 @@ class Deck:
         for i in range(random.randint(7,13)):
             print(shuffle)
             time.sleep(wait_time)
-            os.system("clear")
+            os.system("clear" if os.name == "posix" else "cls")
             print(station)
             time.sleep(wait_time)
-            os.system("clear")
+            os.system("clear"  if os.name == "posix" else "cls")
