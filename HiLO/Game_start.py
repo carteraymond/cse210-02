@@ -1,4 +1,4 @@
-from Classes import Game_Master
+from Classes.Game_Master import Game_Master
 
 
 

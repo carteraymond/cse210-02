@@ -19,7 +19,9 @@ class Game_Master:
         self.is_playing=False
         self.score=0
         self.total_score=0
-        
+        self.first_card = 0
+        self.next_card = 0
+        self.guess = ""
         
     def start(self):
         """Starts the game by running the main game loop.
@@ -27,6 +29,8 @@ class Game_Master:
         Args:
             self (Director): an instance of Director.
         """
+        self.player_points = 300
+        self.is_playing = True
         while self.is_playing:
             self.get_inputs()
             self.do_logic()
@@ -35,41 +39,43 @@ class Game_Master:
     def get_inputs(self):
         """displays first card, then recieves input for if the next card is higher or lower
         """
-        first_card = Card.new_card()
-        print (f'The card is:{first_card}')
+        self.first_card = self.card.new_card()
+        print (f'The card is:{self.first_card}')
 
-        guess = input(f'High or Low? (h/l)').lower()
+        self.guess = input(f'High or Low? (h/l)' ).lower()
+        while self.guess != "h" and self.guess != "l":
+            print("Invalid selection, please try again.")
+            self.guess = input(f'High or Low? (h/l)' ).lower()
+        self.next_card = self.card.new_card()
 
-        next_card = Card.new_card()
+        print(f'The next card was: {self.next_card}')
 
-        print(f'The next card was: {next_card}')
-
-        if guess == 'l':
-            if next_card <= first_card:
-               points = self.player_points + 100
-               print(f'Your score is: {points}')
-            else:
-               points = self.player_points - 75
-               print(f'Your score is: {points}')
-
-                
-        elif guess == 'h':
-            if next_card >= first_card:
-               points = self.player_points + 100
-               print(f'Your score is: {points}')
-
-                
-            else:
-               points = self.player_points - 75
-               print(f'Your score is: {points}')
-
+        
                 
 
         
     def do_logic(self):
         """generates the score system and keeps track of it
         """
-        self.player_points = 300
+        
+        if self.guess == 'l':
+            if self.next_card <= self.first_card:
+               points = self.player_points + 100
+               print(f'Your score is: {points}')
+            else:
+               points = self.player_points - 75
+               print(f'Your score is: {points}')
+
+                
+        elif self.guess == 'h':
+            if self.next_card >= self.first_card:
+               points = self.player_points + 100
+               print(f'Your score is: {points}')
+
+                
+            else:
+               points = self.player_points - 75
+               print(f'Your score is: {points}')
 
         
     def do_display(self):
