@@ -1,4 +1,4 @@
-from Classes.Card import Card
+from Classes.Deck import Deck
 
 limit = 1000
 easy_mode = 1
@@ -18,7 +18,7 @@ class Game_Master:
     def __init__(self):
         """This is a contructor for the Game_Master instance
         """
-        self.card=Card()
+        self.deck = Deck()
         self.is_playing=False
         self.score=0
         self.total_score=0
@@ -45,14 +45,14 @@ class Game_Master:
         """
 
 
-        self.first_card = self.card.new_card()
+        self.first_card = self.deck.draw()
         print (f'The card is:{self.first_card}')
 
         self.guess = input(f'High or Low? (h/l)' ).lower()
         while self.guess != "h" and self.guess != "l":
             print("Invalid selection, please try again.")
             self.guess = input(f'High or Low? (h/l)' ).lower()
-        self.next_card = self.card.new_card()
+        self.next_card = self.deck.draw()
 
         print(f'The next card was: {self.next_card}')
 
@@ -74,10 +74,11 @@ class Game_Master:
                self.player_points -= 75
         if self.player_points < 75:
             self.is_playing = False
-        
+      
     def do_display(self):
         """outputs the results and, if the score is not 0, requests to play again.
         """
         print(f"Your score is: {self.player_points}")
         if self.is_playing == False:
             print("Game over!")
+            print(f"Your final score was {self.player_points}")
