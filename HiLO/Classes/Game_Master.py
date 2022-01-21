@@ -60,24 +60,17 @@ class Game_Master:
         
         if self.guess == 'l':
             if self.next_card <= self.first_card:
-               points = self.player_points + 100
-               print(f'Your score is: {points}')
+               self.player_points += 100
             else:
-               points = self.player_points - 75
-               print(f'Your score is: {points}')
-
-                
+               self.player_points -= 75    
         elif self.guess == 'h':
             if self.next_card >= self.first_card:
-               points = self.player_points + 100
-               print(f'Your score is: {points}')
-
-                
+               self.player_points += 100
             else:
-               points = self.player_points - 75
-               print(f'Your score is: {points}')
-
+               self.player_points -= 75
+        
         
     def do_display(self):
         """outputs the results and, if the score is not 0, requests to play again.
         """
+        print(f"Your score is: {self.player_points}")
