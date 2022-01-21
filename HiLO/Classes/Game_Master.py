@@ -1,5 +1,8 @@
 from Classes.Card import Card
 
+limit = 1000
+easy_mode = 1
+hard_mode =  1.5
 
 class Game_Master:
     """This class is responsible for organizing the game HiLo
@@ -31,14 +34,17 @@ class Game_Master:
         """
         self.player_points = 300
         self.is_playing = True
-        while self.is_playing:
+        while self.is_playing and self.player_points > 0 and self.player_points < limit:
             self.get_inputs()
             self.do_logic()
             self.do_display()
+        
             
     def get_inputs(self):
         """displays first card, then recieves input for if the next card is higher or lower
         """
+
+
         self.first_card = self.card.new_card()
         print (f'The card is:{self.first_card}')
 
@@ -51,13 +57,11 @@ class Game_Master:
         print(f'The next card was: {self.next_card}')
 
         
-                
-
         
     def do_logic(self):
         """generates the score system and keeps track of it
         """
-        
+
         if self.guess == 'l':
             if self.next_card <= self.first_card:
                self.player_points += 100
@@ -68,9 +72,12 @@ class Game_Master:
                self.player_points += 100
             else:
                self.player_points -= 75
-        
+        if self.player_points < 75:
+            self.is_playing = False
         
     def do_display(self):
         """outputs the results and, if the score is not 0, requests to play again.
         """
         print(f"Your score is: {self.player_points}")
+        if self.is_playing == False:
+            print("Game over!")

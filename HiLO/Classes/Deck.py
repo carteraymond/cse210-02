@@ -3,7 +3,7 @@ import random
 
 
 
-class Card:
+class Deck:
     """This class is responsible for the random number generater of the cards
     
     attributes:
@@ -11,10 +11,10 @@ class Card:
     """
     
     def __init__(self):
-        self.card=0
+        pass
         
         
         
-    def new_card(self):
-        self.card=random.randint(1,13)
-        return self.card
+    def draw(self):
+        #self.card=random.randint(1,13)
+        return random.randint(1,13)
