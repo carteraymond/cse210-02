@@ -25,7 +25,7 @@ class Game_Master:
         self.first_card = 0
         self.next_card = 0
         self.guess = ""
-        self.round = 0
+    
         
     def start(self):
         """Starts the game by running the main game loop.
@@ -45,10 +45,9 @@ class Game_Master:
     def get_inputs(self):
         """displays first card, then recieves input for if the next card is higher or lower
         """
-        
 
         self.first_card = self.deck.draw()
-        print (f'\nThe card is:{self.first_card}')
+        print (f'\nThe card is: {self.first_card}')
 
         self.guess = input(f'High or Low? (h/l)' ).lower()
         while self.guess != "h" and self.guess != "l":
@@ -58,16 +57,6 @@ class Game_Master:
 
         print(f'The next card was: {self.next_card}')
 
-        if self.round > 0:
-            choice = input("Would you like to play again: (y/n) ")
-            while choice != "y" and choice != "n":
-                print("Invalid selection, please try again.")
-                choice = input("Would you like to play again: (y/n) ")
-            if choice == "n":
-                self.is_playing = False
-                return
-
-        
         
     def do_logic(self):
         """generates the score system and keeps track of it
@@ -91,11 +80,24 @@ class Game_Master:
         """
         print(f"Your score is: {self.player_points}")
 
-        if self.round >= limit:
+        if self.player_points > 0:
+            choice = input("Would you like to play again: (y/n) ")
+            while choice != "y" and choice != "n":
+                print("Invalid selection, please try again.")
+                choice = input("Would you like to play again: (y/n) ")
+            if choice == "n":
+                print("\nGame over!")
+                print(f"Your final score was {self.player_points}")
+                self.is_playing = False
+                return
+
+        if self.player_points >= limit:
             print("\nYou got 1000 points! You win!!")
             print(f"Your final score is: {self.player_points}")
+            return
             
 
-        if self.is_playing == False:
+        if self.player_points <= 50:
             print("\nGame over!")
             print(f"Your final score was {self.player_points}")
+            return
