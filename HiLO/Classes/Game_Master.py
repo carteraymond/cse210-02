@@ -5,10 +5,10 @@ class Game_Master:
     """This class is responsible for organizing the game HiLo
     
     attributes:
-    card-the class responsible for getting the random card number
-    get_input:gets neccesary information from the user for the game
-    do_score:calculates the score for the game and decides how many points the player should receive
-    display:outputes results into the terminal.
+    card: the class responsible for getting the random card number
+    get_input: gets necessary information from the user for the game
+    do_score: calculates the score for the game and decides how many points the player should receive
+    display: outputs results into the terminal.
     is_playing: checks if the game is currently active
     """
     
