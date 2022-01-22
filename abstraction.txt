@@ -4,15 +4,14 @@ We applied the concept of Abstraction object-oriented programming that "shows"
 only essential attributes and "hides" unnecessary information. The main purpose of abstraction is to hide unnecessary details from the users. It helps in reducing programming complexity and efforts. As a team, we create a well-based program game named "Hilo". 
  So, we build it into two Classes: 
 
- - Card: this class is responsible for the random number generator of the cards.
+ - Deck: this class is responsible for the random number generator of the cards.
 attributes:
     new_card(int): outputs a random number
 
  - Game_Master: This class is responsible for organizing the game Hilo.
 attributes:
-    card: the class responsible for getting the random card number
+    Deck: the class responsible for getting the random card number
     get_input: gets necessary information from the user for the game
     do_score: calculates the score for the game and decides how many points the player should receive
     display: outputs results into the terminal.
     is_playing: checks if the game is currently active
- 
