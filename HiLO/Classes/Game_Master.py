@@ -25,6 +25,7 @@ class Game_Master:
         self.first_card = 0
         self.next_card = 0
         self.guess = ""
+        self.round = 0
         
     def start(self):
         """Starts the game by running the main game loop.
@@ -38,15 +39,16 @@ class Game_Master:
             self.get_inputs()
             self.do_logic()
             self.do_display()
+
         
             
     def get_inputs(self):
         """displays first card, then recieves input for if the next card is higher or lower
         """
-
+        
 
         self.first_card = self.deck.draw()
-        print (f'The card is:{self.first_card}')
+        print (f'\nThe card is:{self.first_card}')
 
         self.guess = input(f'High or Low? (h/l)' ).lower()
         while self.guess != "h" and self.guess != "l":
@@ -55,6 +57,15 @@ class Game_Master:
         self.next_card = self.deck.draw()
 
         print(f'The next card was: {self.next_card}')
+
+        if self.round > 0:
+            choice = input("Would you like to play again: (y/n) ")
+            while choice != "y" and choice != "n":
+                print("Invalid selection, please try again.")
+                choice = input("Would you like to play again: (y/n) ")
+            if choice == "n":
+                self.is_playing = False
+                return
 
         
         
@@ -79,6 +90,12 @@ class Game_Master:
         """outputs the results and, if the score is not 0, requests to play again.
         """
         print(f"Your score is: {self.player_points}")
+
+        if self.round >= limit:
+            print("\nYou got 1000 points! You win!!")
+            print(f"Your final score is: {self.player_points}")
+            
+
         if self.is_playing == False:
-            print("Game over!")
+            print("\nGame over!")
             print(f"Your final score was {self.player_points}")
