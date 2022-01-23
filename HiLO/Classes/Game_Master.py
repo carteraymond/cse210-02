@@ -45,7 +45,7 @@ class Game_Master:
         print ("-The player starts the game with 300 points.")
         print ("-The player earns 100 points if they guessed correctly.")
         print ("-The player loses 75 points if they guessed incorrectly.")
-        print ("-If a player reaches 0 points the game is over.\n")
+        print ("-If a player reaches 0 or 1000 points the game is over.\n")
 
         while self.is_playing and self.player_points > 0 and self.player_points < limit:
             self.get_inputs()
