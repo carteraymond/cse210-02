@@ -34,29 +34,40 @@ class Game_Master:
         """
         self.player_points = 300
         self.is_playing = True
+
+        print ("WELCOME TO HILO GAME")
+        print ("==========================")
+        print ("The objective of this game is that every player guesses if")
+        print ("th next card drawn by the dealer will be higher or lower")
+        print ("than the previous one.\n")
+        print ("RULES:")
+        print ("==========================")
+        print ("-The player starts the game with 300 points.")
+        print ("-The player earns 100 points if they guessed correctly.")
+        print ("-The player loses 75 points if they guessed incorrectly.")
+        print ("-If a player reaches 0 or 1000 points the game is over.\n")
+
         while self.is_playing and self.player_points > 0 and self.player_points < limit:
             self.get_inputs()
             self.do_logic()
             self.do_display()
-        
-            
+          
     def get_inputs(self):
         """displays first card, then recieves input for if the next card is higher or lower
         """
 
-
         self.first_card = self.deck.draw()
-        print (f'\nThe card is: {self.first_card}')
+        print (f'\nThe card is:{self.first_card}')
 
-        self.guess = input(f'High or Low? (h/l) ' ).lower()
+
+        self.guess = input(f'The next Card is High or Low? (h/l)' ).lower()
         while self.guess != "h" and self.guess != "l":
-            print("Invalid selection, please try again.")
-            self.guess = input(f'High or Low? (h/l) ' ).lower()
+            print("\nInvalid selection, please try again.")
+            self.guess = input(f'The next Card is High or Low? (h/l)' ).lower()
         self.next_card = self.deck.draw()
 
         print(f'The next card was: {self.next_card}')
-
-        
+       
         
     def do_logic(self):
         """generates the score system and keeps track of it
