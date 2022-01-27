@@ -93,10 +93,10 @@ class Game_Master:
         print(f"Your score is: {self.player_points}")
 
         if self.player_points > 0:
-            choice = input("Would you like to play again: (y/n) ")
+            choice = input("Would you like to play again: (y/n) ").lower()
             while choice != "y" and choice != "n":
                 print("Invalid selection, please try again.")
-                choice = input("Would you like to play again: (y/n) ")
+                choice = input("Would you like to play again: (y/n) ").lower()
             if choice == "n":
                 print("\nGame over!")
                 print(f"Your final score was {self.player_points}")
@@ -108,7 +108,6 @@ class Game_Master:
             print(f"Your final score is: {self.player_points}")
             return
             
-
         if self.player_points <= 50:
             print("\nGame over!")
             print(f"Your final score was {self.player_points}")
