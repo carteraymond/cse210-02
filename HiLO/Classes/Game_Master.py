@@ -57,13 +57,13 @@ class Game_Master:
         """
 
         self.first_card = self.deck.draw()
-        print (f'\nThe card is:{self.first_card}')
+        print (f'\nThe card is: {self.first_card}')
 
 
-        self.guess = input(f'The next Card is High or Low? (h/l)' ).lower()
+        self.guess = input(f'The next Card is High or Low? (h/l) ' ).lower()
         while self.guess != "h" and self.guess != "l":
             print("\nInvalid selection, please try again.")
-            self.guess = input(f'The next Card is High or Low? (h/l)' ).lower()
+            self.guess = input(f'The next Card is High or Low? (h/l) ' ).lower()
         self.next_card = self.deck.draw()
 
         print(f'The next card was: {self.next_card}')
